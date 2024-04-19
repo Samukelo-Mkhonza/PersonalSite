@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile with Sidebar</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff; /* Set background color to white */
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            font-weight: bold;
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .about-me,
+        .details {
+            width: 300px; /* Fixed width for sections */
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+        }
+        .details {
+            margin-left: 50px; /* Margin between sections */
+            margin-top: 20px; /* Space between sections */
+        }
+        .details span {
+            font-weight: bold; /* Make Name, Age, Location bold */
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 800px; /* Set a width for the container */
+            margin-top: 20px; /* Add margin at the top */
+        }
+        .projects,
+        .github {
+            width: 300px;
+            text-align: left;
+        }
+        .projects h2,
+        .github h2 {
+            font-weight: bold;
+        }
+        .github {
+            text-align: right; /* Align the text to the right */
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-icons a img {
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+        }
+
+        /* Styles for sidebar */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #333;
+            padding-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            transition: left 0.3s ease-in-out;
+            z-index: 1;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        /* Styles for sidebar button */
+        .sidebar-btn {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            cursor: pointer;
+            z-index: 2;
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .sidebar-btn div {
+            width: 30px;
+            height: 4px;
+            background-color: #0737d6;
+            margin: 6px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .change .sidebar-btn div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .change .sidebar-btn div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .change .sidebar-btn div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Move sidebar options down */
+        .sidebar-content {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+        <a href="https://d3v2kzmi11bzc6.cloudfront.net/Full+Samukelo+S.+Mkhonza+CV.pdf" download>View My CV</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+        <a href="#">Option 4</a>
+    </div>
+</div>
+
+
+    <button class="sidebar-btn" onclick="toggleSidebar()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+
+    <div class="container">
+        <!-- Existing profile content -->
+        <h1>Profile</h1>
+        <div class="flex-container">
+            <div class="projects">
+                <h2>My Projects</h2>
+                <a href="link_to_project1"><p>Project 1</p></a>
+                <a href="link_to_project2"><p>Project 2</p></a>
+                <a href="link_to_project3"><p>Project 3</p></a>
+            </div>
+            <div class="profile-container">
+                <img src="https://cloudzauserbucket.s3.amazonaws.com/Cloudza-logo.png" alt="Your Name" class="profile-img">
+                <p>I am a CloudZAbit!</p>
+            </div>
+            <div class="github">
+                <h2>Github Repositories</h2>
+                <a href="link_to_repo1"><p>Repo 1</p></a>
+                <a href="link_to_repo2"><p>Repo 2</p></a>
+                <a href="link_to_repo3"><p>Repo 3</p></a>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="about-me">
+                <h2>About Me</h2>
+                <p>👋🏾 I'm a Junior Cloud Technologist at CloudZa. I spend my days diving into cloud technology. It's like exploring a high-tech world where I learn how to use the internet in really smart ways for businesses</p>
+            </div>
+            <div class="details">
+                <h2>Details</h2>
+                <p><span>Name:</span> Samukelo Mkhonza</p>
+                <p><span>Age:</span> 24</p>
+                <p><span>Location:</span> Cape Town, Western Cape</p>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/samukelo-mkhonza-a27340215/"><img src="https://cloudzauserbucket.s3.amazonaws.com/linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="link_to_twitter_profile"><img src="https://cloudzauserbucket.s3.amazonaws.com/twitter-icon.png" alt="Twitter"></a>
+            <a href="link_to_facebook_profile"><img src="https://cloudzauserbucket.s3.amazonaws.com/facebook-icon.png" alt="Facebook"></a>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const container = document.querySelector('.container');
+            const btn = document.querySelector('.sidebar-btn');
+
+            if (sidebar.style.left === '-250px') {
+                sidebar.style.left = '0';
+                container.style.marginLeft = '250px';
+                btn.classList.add('change');
+            } else {
+                sidebar.style.left = '-250px';
+                container.style.marginLeft = '0';
+                btn.classList.remove('change');
+            }
+        }
+        function toggleDropdown() {
+    document.getElementById("cvDropdown").classList.toggle("show");
+}
+
+    </script>
+        
+</body>
+</html>
+
+
+
+
+
