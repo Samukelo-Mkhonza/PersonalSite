@@ -11,51 +11,61 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffffff; /* Set background color to white */
+            background-color: #e6f2ff; /* Light blue background */
             height: 100vh;
             text-align: center;
+            overflow-x: hidden;
+            background-image: linear-gradient(to right, #ff7f50, #1e90ff); /* Gradient background */
         }
         h1 {
             font-weight: bold;
+            color: #1e90ff; /* Blue */
         }
         .profile-img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
-        .about-me,
-        .details {
-            width: 300px; /* Fixed width for sections */
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        .card {
+            width: 300px;
+            background-color: #ffffff; /* White background for cards */
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .button {
             display: inline-block;
-            vertical-align: top;
-            text-align: left;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #1e90ff; /* Blue */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
         }
-        .details {
-            margin-left: 50px; /* Margin between sections */
-            margin-top: 20px; /* Space between sections */
-        }
-        .details span {
-            font-weight: bold; /* Make Name, Age, Location bold */
+        .button:hover {
+            background-color: #ff7f50; /* Orange */
+            transform: scale(1.05);
         }
         .flex-container {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            width: 800px; /* Set a width for the container */
-            margin-top: 20px; /* Add margin at the top */
-        }
-        .projects,
-        .github {
-            width: 300px;
-            text-align: left;
-        }
-        .projects h2,
-        .github h2 {
-            font-weight: bold;
-        }
-        .github {
-            text-align: right; /* Align the text to the right */
+            width: 800px;
+            margin-top: 20px;
+            transition: margin-left 0.3s ease;
         }
         .social-icons {
             display: flex;
@@ -66,34 +76,33 @@
             width: 30px;
             height: 30px;
             margin: 0 10px;
+            transition: transform 0.3s ease;
         }
-
-        /* Styles for sidebar */
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
         .sidebar {
             height: 100%;
             width: 250px;
             position: fixed;
             top: 0;
             left: -250px;
-            background-color: #333;
+            background-color: #1e90ff; /* Blue */
             padding-top: 20px;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Courier New', monospace;
             transition: left 0.3s ease-in-out;
             z-index: 1;
         }
-
         .sidebar a {
             display: block;
             padding: 10px 20px;
             color: #fff;
             text-decoration: none;
+            transition: background-color 0.3s;
         }
-
         .sidebar a:hover {
-            background-color: #555;
+            background-color: #ff7f50; /* Orange */
         }
-
-        /* Styles for sidebar button */
         .sidebar-btn {
             position: fixed;
             left: 20px;
@@ -104,42 +113,36 @@
             border: none;
             outline: none;
         }
-
         .sidebar-btn div {
             width: 30px;
             height: 4px;
-            background-color: #0737d6;
+            background-color: #ff7f50; /* Orange */
             margin: 6px 0;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
-
         .change .sidebar-btn div:nth-child(1) {
             transform: rotate(-45deg) translate(-5px, 6px);
         }
-
         .change .sidebar-btn div:nth-child(2) {
             opacity: 0;
         }
-
         .change .sidebar-btn div:nth-child(3) {
             transform: rotate(45deg) translate(-5px, -6px);
         }
-
-        /* Move sidebar options down */
         .sidebar-content {
             margin-top: 60px;
         }
     </style>
 </head>
-<div class="sidebar" id="sidebar">
-    <div class="sidebar-content">
-        <a href="https://d3v2kzmi11bzc6.cloudfront.net/Full+Samukelo+S.+Mkhonza+CV.pdf" download>View My CV</a>
-        <a href="#">Option 2</a>
-        <a href="#">Option 3</a>
-        <a href="#">Option 4</a>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <a href="https://d3v2kzmi11bzc6.cloudfront.net/Full+Samukelo+S.+Mkhonza+CV.pdf" download>View My CV</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+            <a href="#">Option 4</a>
+        </div>
     </div>
-</div>
-
 
     <button class="sidebar-btn" onclick="toggleSidebar()">
         <div></div>
@@ -148,32 +151,31 @@
     </button>
 
     <div class="container">
-        <!-- Existing profile content -->
         <h1>Profile</h1>
         <div class="flex-container">
-            <div class="projects">
+            <div class="card">
                 <h2>My Projects</h2>
-                <a href="link_to_project1"><p>Project 1</p></a>
-                <a href="link_to_project2"><p>Project 2</p></a>
-                <a href="link_to_project3"><p>Project 3</p></a>
+                <a href="link_to_project1" class="button">Project 1</a>
+                <a href="link_to_project2" class="button">Project 2</a>
+                <a href="link_to_project3" class="button">Project 3</a>
             </div>
-            <div class="profile-container">
+            <div class="card profile-container">
                 <img src="https://cloudzauserbucket.s3.amazonaws.com/Cloudza-logo.png" alt="Your Name" class="profile-img">
                 <p>I am a CloudZAbit!</p>
             </div>
-            <div class="github">
+            <div class="card">
                 <h2>Github Repositories</h2>
-                <a href="link_to_repo1"><p>Repo 1</p></a>
-                <a href="link_to_repo2"><p>Repo 2</p></a>
-                <a href="link_to_repo3"><p>Repo 3</p></a>
+                <a href="link_to_repo1" class="button">Repo 1</a>
+                <a href="link_to_repo2" class="button">Repo 2</a>
+                <a href="link_to_repo3" class="button">Repo 3</a>
             </div>
         </div>
         <div class="flex-container">
-            <div class="about-me">
+            <div class="card about-me">
                 <h2>About Me</h2>
                 <p>👋🏾 I'm a Junior Cloud Technologist at CloudZa. I spend my days diving into cloud technology. It's like exploring a high-tech world where I learn how to use the internet in really smart ways for businesses</p>
             </div>
-            <div class="details">
+            <div class="card details">
                 <h2>Details</h2>
                 <p><span>Name:</span> Samukelo Mkhonza</p>
                 <p><span>Age:</span> 24</p>
@@ -190,29 +192,16 @@
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
-            const container = document.querySelector('.container');
             const btn = document.querySelector('.sidebar-btn');
 
             if (sidebar.style.left === '-250px') {
                 sidebar.style.left = '0';
-                container.style.marginLeft = '250px';
                 btn.classList.add('change');
             } else {
                 sidebar.style.left = '-250px';
-                container.style.marginLeft = '0';
                 btn.classList.remove('change');
             }
         }
-        function toggleDropdown() {
-    document.getElementById("cvDropdown").classList.toggle("show");
-}
-
     </script>
-        
 </body>
 </html>
-
-
-
-
-
