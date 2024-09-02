@@ -2,97 +2,167 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Profile with Sidebar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Profile</title>
+    <!-- Add Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f8f4f0; /* Light neutral background */
+            color: #333; /* Dark text color */
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Navigation */
+        .header {
+            background-color: #ffffff;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #e6f2ff; /* Light blue background */
-            height: 100vh;
+        }
+
+        .header nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .header nav a:hover {
+            color: #1e90ff; /* Highlight color */
+        }
+
+        /* Main Profile Container */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .profile-image-section {
+            flex: 1;
+            max-width: 300px;
+            margin-right: 40px;
             text-align: center;
-            overflow-x: hidden;
-            background-image: linear-gradient(to right, #ff7f50, #1e90ff); /* Gradient background */
         }
-        h1 {
-            font-weight: bold;
-            color: #1e90ff; /* Blue */
-        }
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        .profile-img:hover {
-            transform: scale(1.1);
-        }
-        .card {
-            width: 300px;
-            background-color: #ffffff; /* White background for cards */
-            padding: 20px;
-            margin: 20px;
+
+        .profile-image-section img {
+            width: 100%;
+            max-width: 300px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+        .profile-image-section p {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #666;
         }
+
+        /* Profile Details Section */
+        .profile-details-section {
+            flex: 2;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-details-section h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #1e90ff; /* Highlight color */
+        }
+
+        .profile-details-section p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .profile-details-section span {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin: 30px 0 15px;
+            color: #333;
+            border-bottom: 2px solid #1e90ff; /* Title underline */
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Button Styles */
         .button {
             display: inline-block;
             padding: 10px 20px;
-            margin: 10px;
-            background-color: #1e90ff; /* Blue */
+            margin: 10px 0;
+            background-color: #1e90ff;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-            font-weight: bold;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
         .button:hover {
-            background-color: #ff7f50; /* Orange */
-            transform: scale(1.05);
+            background-color: #ff7f50;
+            transform: translateY(-3px);
         }
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 800px;
-            margin-top: 20px;
-            transition: margin-left 0.3s ease;
-        }
+
+        /* Social Icons */
         .social-icons {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             margin-top: 20px;
         }
+
+        .social-icons a {
+            margin-right: 15px;
+        }
+
         .social-icons a img {
             width: 30px;
             height: 30px;
-            margin: 0 10px;
             transition: transform 0.3s ease;
         }
+
         .social-icons a img:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
+
+        /* Sidebar */
         .sidebar {
             height: 100%;
             width: 250px;
             position: fixed;
             top: 0;
             left: -250px;
-            background-color: #1e90ff; /* Blue */
+            background-color: #1e90ff;
             padding-top: 20px;
-            font-family: 'Courier New', monospace;
             transition: left 0.3s ease-in-out;
             z-index: 1;
         }
+
         .sidebar a {
             display: block;
             padding: 10px 20px;
@@ -100,9 +170,11 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
+
         .sidebar a:hover {
-            background-color: #ff7f50; /* Orange */
+            background-color: #ff7f50;
         }
+
         .sidebar-btn {
             position: fixed;
             left: 20px;
@@ -113,28 +185,44 @@
             border: none;
             outline: none;
         }
+
         .sidebar-btn div {
             width: 30px;
             height: 4px;
-            background-color: #ff7f50; /* Orange */
+            background-color: #ff7f50;
             margin: 6px 0;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
+
         .change .sidebar-btn div:nth-child(1) {
             transform: rotate(-45deg) translate(-5px, 6px);
         }
+
         .change .sidebar-btn div:nth-child(2) {
             opacity: 0;
         }
+
         .change .sidebar-btn div:nth-child(3) {
             transform: rotate(45deg) translate(-5px, -6px);
         }
+
         .sidebar-content {
             margin-top: 60px;
         }
     </style>
 </head>
 <body>
+    <!-- Header Navigation -->
+    <div class="header">
+        <nav>
+            <a href="#">Bio</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Podcast</a>
+            <a href="#">Blog</a>
+        </nav>
+    </div>
+
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-content">
             <a href="https://d3v2kzmi11bzc6.cloudfront.net/Full+Samukelo+S.+Mkhonza+CV.pdf" download>View My CV</a>
@@ -150,42 +238,37 @@
         <div></div>
     </button>
 
-    <div class="container">
-        <h1>Profile</h1>
-        <div class="flex-container">
-            <div class="card">
-                <h2>My Projects</h2>
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <!-- Profile Image and Description -->
+        <div class="profile-image-section">
+            <img src="https://cloudzauserbucket.s3.amazonaws.com/Cloudza-logo.png" alt="Your Name">
+            <p>👋🏾 I'm a Junior Cloud Technologist at CloudZa. I spend my days diving into cloud technology, exploring a high-tech world where I learn how to use the internet in really smart ways for businesses.</p>
+            <!-- Social Icons -->
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/samukelo-mkhonza-a27340215/"><img src="https://cloudzauserbucket.s3.amazonaws.com/linkedin-icon.png" alt="LinkedIn"></a>
+                <a href="link_to_twitter_profile"><img src="https://cloudzauserbucket.s3.amazonaws.com/twitter-icon.png" alt="Twitter"></a>
+                <a href="link_to_facebook_profile"><img src="https://cloudzauserbucket.s3.amazonaws.com/facebook-icon.png" alt="Facebook"></a>
+            </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="profile-details-section">
+            <h1>Samukelo Mkhonza</h1>
+            <p><span>Age:</span> 24</p>
+            <p><span>Location:</span> Cape Town, Western Cape</p>
+            <div>
+                <h2 class="section-title">My Projects</h2>
                 <a href="link_to_project1" class="button">Project 1</a>
                 <a href="link_to_project2" class="button">Project 2</a>
                 <a href="link_to_project3" class="button">Project 3</a>
             </div>
-            <div class="card profile-container">
-                <img src="https://cloudzauserbucket.s3.amazonaws.com/Cloudza-logo.png" alt="Your Name" class="profile-img">
-                <p>I am a CloudZAbit!</p>
-            </div>
-            <div class="card">
-                <h2>Github Repositories</h2>
+            <div>
+                <h2 class="section-title">Github Repositories</h2>
                 <a href="link_to_repo1" class="button">Repo 1</a>
                 <a href="link_to_repo2" class="button">Repo 2</a>
                 <a href="link_to_repo3" class="button">Repo 3</a>
             </div>
-        </div>
-        <div class="flex-container">
-            <div class="card about-me">
-                <h2>About Me</h2>
-                <p>👋🏾 I'm a Junior Cloud Technologist at CloudZa. I spend my days diving into cloud technology. It's like exploring a high-tech world where I learn how to use the internet in really smart ways for businesses</p>
-            </div>
-            <div class="card details">
-                <h2>Details</h2>
-                <p><span>Name:</span> Samukelo Mkhonza</p>
-                <p><span>Age:</span> 24</p>
-                <p><span>Location:</span> Cape Town, Western Cape</p>
-            </div>
-        </div>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/samukelo-mkhonza-a27340215/"><img src="https://cloudzauserbucket.s3.amazonaws.com/linkedin-icon.png" alt="LinkedIn"></a>
-            <a href="link_to_twitter_profile"><img src="https://cloudzauserbucket.s3.amazonaws.com/twitter-icon.png" alt="Twitter"></a>
-            <a href="link_to_facebook_profile"><img src="https://cloudzauserbucket.s3.amazonaws.com/facebook-icon.png" alt="Facebook"></a>
         </div>
     </div>
 
